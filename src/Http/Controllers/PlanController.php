@@ -36,7 +36,7 @@ class PlanController extends Controller
     {
         return Tomato::json(
             request: $request,
-            model: \Queents\TomatoSubscription\Models\Plan::class,
+            model: Plan::class,
         );
     }
 
@@ -79,8 +79,8 @@ class PlanController extends Controller
     {
         $response = Tomato::store(
             request: $request,
-            model: \Queents\TomatoSubscription\Models\Plan::class,
-            message: 'Plan created successfully',
+            model: Plan::class,
+            message: trans('tomato-subscription::global.plans.messages.created'),
             redirect: 'admin.plans.index',
         );
 
@@ -126,7 +126,7 @@ class PlanController extends Controller
         $response = Tomato::update(
             request: $request,
             model: $model,
-            message: 'Plan updated successfully',
+            message: trans('tomato-subscription::global.plans.messages.updated'),
             redirect: 'admin.plans.index',
         );
 
@@ -152,7 +152,7 @@ class PlanController extends Controller
     {
         return Tomato::destroy(
             model: $model,
-            message: 'Plan deleted successfully',
+            message: trans('tomato-subscription::global.plans.messages.deleted'),
             redirect: 'admin.plans.index',
         );
     }

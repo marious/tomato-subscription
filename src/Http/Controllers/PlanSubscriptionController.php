@@ -70,7 +70,7 @@ class PlanSubscriptionController extends Controller
             ->where('model_id', $request->get('model_id'))->first();
 
         if($check){
-            Toast::danger('Sorry This user has an active plan')->autoDismiss(2);
+            Toast::danger(trans('tomato-subscription::global.subscription.messages.not'))->autoDismiss(2);
             return back();
         }
 
@@ -97,7 +97,7 @@ class PlanSubscriptionController extends Controller
         $response = Tomato::store(
             request: $request,
             model: PlanSubscription::class,
-            message: 'PlanSubscription created successfully',
+            message: trans('tomato-subscription::global.subscription.messages.created'),
             redirect: 'admin.plan-subscription.index',
         );
 
@@ -154,7 +154,7 @@ class PlanSubscriptionController extends Controller
                 ->where('model_id', $request->get('model_id'))->first();
 
             if($check){
-                Toast::danger('Sorry This user has an active plan')->autoDismiss(2);
+                Toast::danger(trans('tomato-subscription::global.subscription.messages.not'))->autoDismiss(2);
                 return back();
             }
 
@@ -182,7 +182,7 @@ class PlanSubscriptionController extends Controller
         $response = Tomato::update(
             request: $request,
             model: $model,
-            message: 'PlanSubscription updated successfully',
+            message: trans('tomato-subscription::global.subscription.messages.updated'),
             redirect: 'admin.plan-subscription.index',
         );
 
@@ -197,7 +197,7 @@ class PlanSubscriptionController extends Controller
     {
         return Tomato::destroy(
             model: $model,
-            message: 'PlanSubscription deleted successfully',
+            message: trans('tomato-subscription::global.subscription.messages.deleted'),
             redirect: 'admin.plan-subscription.index',
         );
     }

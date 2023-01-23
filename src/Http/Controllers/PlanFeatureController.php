@@ -58,7 +58,7 @@ class PlanFeatureController extends Controller
         $response = Tomato::store(
             request: $request,
             model: PlanFeature::class,
-            message: 'PlanFeature created successfully',
+            message: trans('tomato-subscription::global.features.messages.created'),
             redirect: 'admin.plan-features.index',
         );
 
@@ -99,7 +99,7 @@ class PlanFeatureController extends Controller
         $response = Tomato::update(
             request: $request,
             model: $model,
-            message: 'PlanFeature updated successfully',
+            message: trans('tomato-subscription::global.features.messages.updated'),
             redirect: 'admin.plan-features.index',
         );
 
@@ -114,7 +114,7 @@ class PlanFeatureController extends Controller
     {
         return Tomato::destroy(
             model: $model,
-            message: 'PlanFeature deleted successfully',
+            message: trans('tomato-subscription::global.features.messages.deleted'),
             redirect: 'admin.plan-features.index',
         );
     }

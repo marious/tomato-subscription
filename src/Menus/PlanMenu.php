@@ -19,6 +19,11 @@ class PlanMenu extends TomatoMenu
      */
     public ?string $menu = "dashboard";
 
+    public function __construct()
+    {
+        $this->group = trans('tomato-subscription::global.plans.group');
+    }
+
     /**
      * @return array
      */
@@ -26,17 +31,9 @@ class PlanMenu extends TomatoMenu
     {
         return [
             Menu::make()
-                ->label("Plans")
+                ->label(trans('tomato-subscription::global.plans.title'))
                 ->icon("bx bxs-bookmark")
                 ->route("admin.plans.index"),
-//            Menu::make()
-//                ->label("Plan features")
-//                ->icon("bx bxs-circle")
-//                ->route("admin.plan-features.index"),
-//            Menu::make()
-//                ->label("Plan subscription")
-//                ->icon("bx bxs-circle")
-//                ->route("admin.plan-subscription.index"),
         ];
     }
 }

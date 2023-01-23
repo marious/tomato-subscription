@@ -1,12 +1,12 @@
 <x-splade-modal class="font-main">
-    <h1 class="text-2xl font-bold mb-4">{{trans('tomato-admin::global.crud.view')}} Plan #{{$model->id}}</h1>
+    <h1 class="text-2xl font-bold mb-4">{{trans('tomato-admin::global.crud.view')}} {{trans('tomato-subscription::global.plans.single')}} #{{$model->id}}</h1>
 
     <div class="flex flex-col space-y-4">
-        
+
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Name
+                      {{trans('tomato-subscription::global.plans.name')}}
                   </h3>
               </div>
               <div>
@@ -16,11 +16,11 @@
               </div>
           </div>
 
-          
+
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Description
+                      {{trans('tomato-subscription::global.plans.description')}}
                   </h3>
               </div>
               <div>
@@ -33,7 +33,7 @@
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Order
+                      {{trans('tomato-subscription::global.plans.order')}}
                   </h3>
               </div>
               <div>
@@ -43,12 +43,12 @@
               </div>
           </div>
 
-          
-          
+
+
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Invoice interval
+                      {{trans('tomato-subscription::global.plans.invoice_interval')}}
                   </h3>
               </div>
               <div>
@@ -58,15 +58,32 @@
               </div>
           </div>
 
+        <div class="flex justify-between">
+            <div>
+                <h3 class="text-lg font-bold">
+                    {{trans('tomato-subscription::global.plans.invoice_period')}}
+                </h3>
+            </div>
+            <div>
+                <h3 class="text-lg">
+                    {{ $model->invoice_period}}
+                </h3>
+            </div>
+        </div>
+
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Is recurring
+                      {{trans('tomato-subscription::global.plans.is_recurring')}}
                   </h3>
               </div>
               <div>
                   <h3 class="text-lg">
-                      {{ $model->is_recurring}}
+                      @if($model->is_recurring)
+                          <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @else
+                          <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @endif
                   </h3>
               </div>
           </div>
@@ -74,12 +91,16 @@
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Is active
+                      {{trans('tomato-subscription::global.plans.is_active')}}
                   </h3>
               </div>
               <div>
                   <h3 class="text-lg">
-                      {{ $model->is_active}}
+                      @if($model->is_active)
+                          <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @else
+                          <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @endif
                   </h3>
               </div>
           </div>
@@ -87,12 +108,16 @@
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Is free
+                      {{trans('tomato-subscription::global.plans.is_free')}}
                   </h3>
               </div>
               <div>
                   <h3 class="text-lg">
-                      {{ $model->is_free}}
+                      @if($model->is_free)
+                          <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @else
+                          <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @endif
                   </h3>
               </div>
           </div>
@@ -100,12 +125,16 @@
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Is default
+                      {{trans('tomato-subscription::global.plans.is_default')}}
                   </h3>
               </div>
               <div>
                   <h3 class="text-lg">
-                      {{ $model->is_default}}
+                      @if($model->is_default)
+                          <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @else
+                          <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                      @endif
                   </h3>
               </div>
           </div>

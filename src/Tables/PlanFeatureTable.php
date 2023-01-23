@@ -52,18 +52,15 @@ class PlanFeatureTable extends AbstractTable
             ->bulkAction(
                 label: trans('tomato-admin::global.crud.delete'),
                 each: fn (\Queents\TomatoSubscription\Models\PlanFeature $model) => $model->delete(),
-                after: fn () => Toast::danger('PlanFeature Has Been Deleted')->autoDismiss(2),
+                after: fn () => Toast::danger(trans('tomato-subscription::global.features.messages.deleted'))->autoDismiss(2),
                 confirm: true
             )
             ->export()
             ->defaultSort('id')
-            ->column(label: 'Id', sortable: true)
-            ->column(label: 'Name', sortable: true)
-            ->column(label: 'Key', sortable: true)
-            ->column(label: 'Value', sortable: true)
-            ->column(label: 'Description', sortable: true)
-            ->column(label: 'Extra', sortable: true)
-            ->column(label: 'Is_active', sortable: true)
+            ->column(key: 'id',label: trans('tomato-subscription::global.features.id'), sortable: true)
+            ->column(key: 'name',label: trans('tomato-subscription::global.features.name'), sortable: true)
+            ->column(key: 'key',label: trans('tomato-subscription::global.features.key'), sortable: true)
+            ->column(key: 'is_active',label: trans('tomato-subscription::global.features.is_active'), sortable: true)
             ->column(key: 'actions',label: trans('tomato-admin::global.crud.actions'))
             ->paginate(15);
     }

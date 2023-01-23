@@ -1,12 +1,12 @@
 <x-splade-modal class="font-main">
-    <h1 class="text-2xl font-bold mb-4">{{trans('tomato-admin::global.crud.view')}} PlanFeature #{{$model->id}}</h1>
+    <h1 class="text-2xl font-bold mb-4">{{trans('tomato-admin::global.crud.view')}} {{trans('tomato-subscription::global.features.single')}} #{{$model->id}}</h1>
 
     <div class="flex flex-col space-y-4">
-        
+
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Name
+                      {{trans('tomato-subscription::global.features.name')}}
                   </h3>
               </div>
               <div>
@@ -19,7 +19,7 @@
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Key
+                      {{trans('tomato-subscription::global.features.key')}}
                   </h3>
               </div>
               <div>
@@ -32,7 +32,7 @@
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Value
+                      {{trans('tomato-subscription::global.features.value')}}
                   </h3>
               </div>
               <div>
@@ -45,7 +45,7 @@
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Description
+                      {{trans('tomato-subscription::global.features.description')}}
                   </h3>
               </div>
               <div>
@@ -55,16 +55,22 @@
               </div>
           </div>
 
-          
+
           <div class="flex justify-between">
               <div>
                   <h3 class="text-lg font-bold">
-                      Is active
+                      {{trans('tomato-subscription::global.features.is_active')}}
                   </h3>
               </div>
               <div>
                   <h3 class="text-lg">
-                      {{ $model->is_active}}
+                      <div class="text-center">
+                          @if($model->is_active)
+                              <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                          @else
+                              <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                          @endif
+                      </div>
                   </h3>
               </div>
           </div>

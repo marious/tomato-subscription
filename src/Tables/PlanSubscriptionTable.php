@@ -52,16 +52,16 @@ class PlanSubscriptionTable extends AbstractTable
             ->bulkAction(
                 label: trans('tomato-admin::global.crud.delete'),
                 each: fn (\Queents\TomatoSubscription\Models\PlanSubscription $model) => $model->delete(),
-                after: fn () => Toast::danger('PlanSubscription Has Been Deleted')->autoDismiss(2),
+                after: fn () => Toast::danger(trans('tomato-subscription::global.subscription.messages.deleted'))->autoDismiss(2),
                 confirm: true
             )
             ->export()
             ->defaultSort('id')
-            ->column(label: 'Id', sortable: true)
-            ->column(key: 'subscriber.name', sortable: true)
-            ->column(key: 'plan.name', sortable: true)
-            ->column(label: 'Status', sortable: true)
-            ->column(label: 'Is_current', sortable: true)
+            ->column(key: 'id',label: trans('tomato-subscription::global.subscription.id'), sortable: true)
+            ->column(key: 'subscriber.name',label: trans('tomato-subscription::global.subscription.subscriber'), sortable: true)
+            ->column(key: 'plan.name',label: trans('tomato-subscription::global.subscription.plan_id'), sortable: true)
+            ->column(key: 'status',label: trans('tomato-subscription::global.subscription.status'), sortable: true)
+            ->column(key: 'is_current', label: trans('tomato-subscription::global.subscription.is_current'),sortable: true)
             ->column(key: 'actions',label: trans('tomato-admin::global.crud.actions'))
             ->paginate(15);
     }

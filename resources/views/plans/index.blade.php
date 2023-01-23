@@ -1,16 +1,16 @@
 <x-tomato-admin-layout>
     <x-slot name="header">
-        {{ __('Plan') }}
+        {{ trans('tomato-subscription::global.plans.title') }}
     </x-slot>
     <x-slot name="headerBody">
         <Link href="/admin/plan-subscription" class=" filament-button inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset dark:focus:ring-offset-0 min-h-[2.25rem] px-4 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700 filament-page-button-action">
-            Subscriptions
+            {{ trans('tomato-subscription::global.subscription.title') }}
         </Link>
         <Link href="/admin/plan-features" class="mx-4 filament-button inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset dark:focus:ring-offset-0 min-h-[2.25rem] px-4 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700 filament-page-button-action">
-            Features
+            {{ trans('tomato-subscription::global.features.title') }}
         </Link>
         <Link href="/admin/plans/create" class="filament-button inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset dark:focus:ring-offset-0 min-h-[2.25rem] px-4 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700 filament-page-button-action">
-            {{trans('tomato-admin::global.crud.create-new')}} Plan
+            {{trans('tomato-admin::global.crud.create-new')}} {{ trans('tomato-subscription::global.plans.single') }}
         </Link>
     </x-slot>
 
@@ -19,6 +19,42 @@
         <div class="mx-auto">
             @if(\Queents\TomatoSubscription\Models\Plan::count())
             <x-splade-table :for="$table" striped>
+                <x-splade-cell is_recurring>
+                    <div class="text-center">
+                        @if($item->is_recurring)
+                            <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @else
+                            <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @endif
+                    </div>
+                </x-splade-cell>
+                <x-splade-cell is_active>
+                    <div class="text-center">
+                        @if($item->is_active)
+                            <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @else
+                            <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @endif
+                    </div>
+                </x-splade-cell>
+                <x-splade-cell is_free>
+                    <div class="text-center">
+                        @if($item->is_free)
+                            <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @else
+                            <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @endif
+                    </div>
+                </x-splade-cell>
+                <x-splade-cell is_default>
+                    <div class="text-center">
+                        @if($item->is_default)
+                            <x-heroicon-s-check-circle class="text-green-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @else
+                            <x-heroicon-s-x-circle class="text-red-600 h-8 w-8 ltr:mr-2 rtl:ml-2"/>
+                        @endif
+                    </div>
+                </x-splade-cell>
                 <x-splade-cell actions>
                     <div class="flex justify-start">
                         <Link href="/admin/plans/{{ $item->id }}" class="px-2 text-blue-500" slideover>

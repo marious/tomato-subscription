@@ -52,19 +52,19 @@ class PlanTable extends AbstractTable
             ->bulkAction(
                 label: trans('tomato-admin::global.crud.delete'),
                 each: fn (\Queents\TomatoSubscription\Models\Plan $model) => $model->delete(),
-                after: fn () => Toast::danger('Plan Has Been Deleted')->autoDismiss(2),
+                after: fn () => Toast::danger(trans('tomato-subscription::global.plans.messages.deleted'))->autoDismiss(2),
                 confirm: true
             )
             ->export()
             ->defaultSort('id')
-            ->column(label: 'Id', sortable: true)
-            ->column(label: 'Name', sortable: true)
-            ->column(label: 'Price', sortable: true)
-            ->column(label: 'Invoice_interval', sortable: true)
-            ->column(label: 'Is_recurring', sortable: true)
-            ->column(label: 'Is_active', sortable: true)
-            ->column(label: 'Is_free', sortable: true)
-            ->column(label: 'Is_default', sortable: true)
+            ->column(key: 'id',label: trans('tomato-subscription::global.plans.id'), sortable: true)
+            ->column(key: 'name',label: trans('tomato-subscription::global.plans.name'), sortable: true)
+            ->column(key: 'price',label: trans('tomato-subscription::global.plans.price'), sortable: true)
+            ->column(key: 'invoice_interval',label: trans('tomato-subscription::global.plans.invoice_interval'), sortable: true)
+            ->column(key: 'is_recurring',label: trans('tomato-subscription::global.plans.is_recurring'), sortable: true)
+            ->column(key: 'is_active',label: trans('tomato-subscription::global.plans.is_active'), sortable: true)
+            ->column(key: 'is_free',label: trans('tomato-subscription::global.plans.is_free'), sortable: true)
+            ->column(key: 'is_default',label: trans('tomato-subscription::global.plans.is_default'), sortable: true)
             ->column(key: 'actions',label: trans('tomato-admin::global.crud.actions'))
             ->paginate(15);
     }
