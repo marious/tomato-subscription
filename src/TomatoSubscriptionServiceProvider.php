@@ -4,6 +4,7 @@ namespace Queents\TomatoSubscription;
 
 use Illuminate\Support\ServiceProvider;
 use Queents\TomatoPHP\Services\Menu\TomatoMenuRegister;
+use Queents\TomatoSubscription\Console\GenerateFeatures;
 use Queents\TomatoSubscription\Menus\PlanMenu;
 
 
@@ -14,6 +15,7 @@ class TomatoSubscriptionServiceProvider extends ServiceProvider
         //Register generate command
         $this->commands([
            \Queents\TomatoSubscription\Console\TomatoSubscriptionInstall::class,
+            GenerateFeatures::class
         ]);
 
         //Register Config file

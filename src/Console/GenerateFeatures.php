@@ -14,7 +14,7 @@ class GenerateFeatures extends Command
      *
      * @var string
      */
-    protected $name = 'features:generate';
+    protected $name = 'tomato-feature:generate';
 
     /**
      * The console command description.
@@ -31,16 +31,16 @@ class GenerateFeatures extends Command
      */
     public function handle()
     {
-        $features = [
-            'frontend.profile.index'
-        ];
+        $features = $this->ask('Enter features key separated by comma (,)');
 
-        foreach ($features as $feature) {
+        foreach (explode(',', $features) as $feature) {
             $newFeature = new PlanFeature();
             $newFeature->name = $feature;
             $newFeature->key = $feature;
             $newFeature->save();
         }
+
+        $this->info('🍅 Features generated successfully!');
     }
 
 
