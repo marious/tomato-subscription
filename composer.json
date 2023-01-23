@@ -1,0 +1,38 @@
+{
+    "name": "queents/tomato-subscription",
+    "type": "library",
+    "description": "your package description will go here",
+    "keywords": [
+        "php",
+        "laravel",
+        "template"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Queents\\TomatoSubscription\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Queents\\TomatoSubscription\\TomatoSubscriptionServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Queen Tech",
+            "email": "git@queentechsoltions.net"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "queents/console-helpers": "^1.0"
+    }
+}
