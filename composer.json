@@ -1,11 +1,16 @@
 {
     "name": "queents/tomato-subscription",
     "type": "library",
-    "description": "your package description will go here",
+    "description": "Plan subscription with selected features to build a feature control plan for Tomato",
     "keywords": [
         "php",
         "laravel",
-        "template"
+        "template",
+        "subscription",
+        "plans",
+        "features",
+        "tomato",
+        "splade"
     ],
     "license": "MIT",
     "autoload": {

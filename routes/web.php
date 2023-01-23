@@ -23,7 +23,7 @@ Route::middleware([
     Route::delete('admin/plans/{model}', [PlanController::class, 'destroy'])->name('plans.destroy');
 });
 
-Route::middleware(['web', 'splade', 'verified'])->name('admin.')->group(function () {
+Route::middleware(['web', 'splade', 'verified', \Queents\TomatoSubscription\Http\Middleware\UserHasBeenSubscribedToPlan::class])->name('admin.')->group(function () {
     Route::get('admin/plan-features', [PlanFeatureController::class, 'index'])->name('plan-features.index');
     Route::get('admin/plan-features/api', [PlanFeatureController::class, 'api'])->name('plan-features.api');
     Route::get('admin/plan-features/create', [PlanFeatureController::class, 'create'])->name('plan-features.create');

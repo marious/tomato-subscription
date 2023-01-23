@@ -1,13 +1,14 @@
-# Tomato subscription
+# Tomato Subscription
 
-your package description will go here
+Plan subscription with selected features to build a feature control plan for Tomato
 
 ## Installation
 
 ```bash
 composer require queents/tomato-subscription
 ```
-your install here
+
+after you install run this command
 
 ```bash
 php artisan tomato-subscription:install
@@ -15,11 +16,49 @@ php artisan tomato-subscription:install
 
 ## Using
 
-your using here..
+you can generate a new feature by use this command
 
-## Support
+```bash
+php artisan tomato-feature:generate
+```
 
-your support link here..
+it will generate a feature for you and you can add it to your plan.
+
+to make some routes guard by our plan feature control:
+
+### Add Model to config
+
+go to `config/tomato-subscription.php` and add new model like
+
+```php
+[
+    "label" => "Users",
+    "id" => \App\Models\User::class
+],
+```
+
+### Use Subscription trait on your model
+
+you need to add this trait to your model
+
+```php
+use Queents\TomatoSubscription\Traits\HasPlanSubscription;
+
+class User extends Authenticatable
+{
+    use HasPlanSubscription;
+    ...
+```
+
+### Add Middleware to your routes
+
+you can add the middleware to you routes like
+
+```php
+\Queents\TomatoSubscription\Http\Middleware\UserHasBeenSubscribedToPlan::class
+```
+
+now your app ready to use our package..
 
 ## Changelog
 
